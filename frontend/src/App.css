@@ -110,7 +110,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 19px;
+  font-size: 16px;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
@@ -628,6 +628,10 @@ iframe {
 }
 
 @media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+
   :root {
     --section-gap: clamp(1rem, 3vw, 1.5rem);
   }

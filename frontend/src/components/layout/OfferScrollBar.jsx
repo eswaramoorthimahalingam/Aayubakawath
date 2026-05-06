@@ -10,34 +10,37 @@ export default function OfferScrollBar() {
 
   if (error) return null;
 
-  const repeated = [...offers, ...offers, ...offers, ...offers];
+  const repeated = [...offers, ...offers];
 
-  if (loading) return <div className="text-center py-4 text-[var(--color-text-muted)] font-body text-xs tracking-[0.1em] uppercase">Loading offers...</div>;
+  if (loading) return <div className="py-4 text-center font-body text-xs uppercase tracking-[0.1em] text-[var(--color-text-muted)]">Loading offers...</div>;
   if (offers.length === 0)
-    return <div className="text-center py-4 text-[var(--color-text-muted)] font-body text-lg tracking-[0.1em] uppercase">No offers available</div>;
+    return <div className="py-4 text-center font-body text-lg uppercase tracking-[0.1em] text-[var(--color-text-muted)]">No offers available</div>;
 
   return (
-    <div className="w-full h-16 sm:h-[72px] overflow-hidden flex items-center group justify-center relative">
-      <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
+    <div className="group relative flex h-14 w-full items-center overflow-hidden sm:h-16">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-white via-white/90 to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-white via-white/90 to-transparent" />
+
+      <div className="flex min-w-max animate-offer-marquee group-hover:[animation-play-state:paused]">
         {repeated.map((offer, i) => (
           <span
-            key={i}
-            className="inline-flex items-center text-[1rem] sm:text-[1rem] font-medium uppercase tracking-[0.18em]
-              text-[var(--color-text)] whitespace-nowrap mr-16"
+            key={`${offer.id || offer.offerText || offer.text}-${i}`}
+            className="inline-flex items-center gap-4 px-6 font-body text-[0.8rem] font-medium uppercase tracking-[0.16em] whitespace-nowrap text-[var(--color-text)] sm:gap-5 sm:px-8 sm:text-[0.9rem]"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-sage)] mr-5 opacity-60"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-sage)] opacity-60" />
             {offer.text || offer.offerText}
           </span>
         ))}
       </div>
 
       <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(-25%); }
-          100% { transform: translateX(0); }
+        @keyframes offerMarquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
+        .animate-offer-marquee {
+          animation: offerMarquee 28s linear infinite;
+          will-change: transform;
         }
       `}</style>
     </div>

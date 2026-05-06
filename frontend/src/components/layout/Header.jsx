@@ -118,7 +118,7 @@ export default function Header() {
       <header
         className={`sticky top-0 z-40 transition-all duration-500 ${headerBg}`}
       >
-        <div className="max-w-[1680px] mx-auto px-2.5 sm:px-8 lg:px-12 2xl:px-16 h-[86px] flex items-center gap-2 sm:gap-4 lg:gap-5">
+        <div className="mx-auto flex h-[78px] w-full max-w-[1600px] items-center gap-2 px-3 sm:px-5 lg:h-[82px] lg:px-6 xl:h-[86px] xl:px-8 2xl:px-10">
           {/* Logo */}
           <a
             href="/"
@@ -126,7 +126,7 @@ export default function Header() {
               e.preventDefault();
               navigate("/");
             }}
-            className="flex items-center gap-3.5 shrink-0 group"
+            className="group flex min-w-0 shrink-0 items-center gap-2.5 xl:gap-3.5"
           >
             <div
               className="w-12 h-12 overflow-hidden rounded-xl border border-[var(--color-border)] flex-shrink-0
@@ -139,7 +139,7 @@ export default function Header() {
               />
             </div>
             <span
-              className="font-display text-[31px] font-semibold tracking-tight hidden sm:block text-[var(--color-text)]
+              className="hidden whitespace-nowrap font-display text-[24px] font-semibold leading-none tracking-tight text-[var(--color-text)] sm:block xl:text-[28px] 2xl:text-[31px]
               group-hover:text-[var(--color-sage)] transition-colors duration-300"
             >
               Aayubakwath
@@ -147,7 +147,7 @@ export default function Header() {
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex flex-1 min-w-0 items-center justify-center gap-1 ml-2 bg-white border border-[var(--color-border)] rounded-2xl p-1">
+          <nav className="ml-1 hidden min-w-0 flex-1 items-center justify-center gap-1 rounded-2xl border border-[var(--color-border)] bg-white p-1 xl:flex">
             {navLinks.map(({ label, href }) => {
               const active = isActive(href);
               return (
@@ -158,8 +158,7 @@ export default function Header() {
                     e.preventDefault();
                     navigate(href);
                   }}
-                  className={`relative px-3 xl:px-4 py-3 font-body text-[14px] xl:text-[15px] font-semibold tracking-[0.03em]
-                    transition-all duration-250 rounded-xl whitespace-nowrap
+                  className={`relative rounded-xl px-2.5 py-3 font-body text-[13px] font-semibold tracking-[0.03em] whitespace-nowrap transition-all duration-250 xl:px-3.5 xl:text-[14px]
                     ${
                       active
                         ? "text-[var(--color-text)] bg-white"
@@ -177,7 +176,7 @@ export default function Header() {
 
           <HeaderSearch />
 
-          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-1.5 xl:ml-0 xl:gap-2">
             <a
               href="/wishlist"
               onClick={(e) => {
@@ -185,9 +184,9 @@ export default function Header() {
                 navigate("/wishlist");
               }}
               aria-label="Wishlist"
-              className="hidden lg:flex relative w-12 h-12 items-center justify-center rounded-xl
+              className="relative hidden h-11 w-11 items-center justify-center rounded-xl
                 text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
-                hover:bg-white border border-transparent hover:border-[var(--color-border)] transition-all duration-200"
+                hover:bg-white border border-transparent hover:border-[var(--color-border)] transition-all duration-200 xl:flex"
             >
               <FaHeart size={17} />
               {wishlistCount > 0 && <BadgeCount n={wishlistCount} />}
@@ -200,18 +199,18 @@ export default function Header() {
                 navigate("/trackorder");
               }}
               aria-label="Track order"
-              className="hidden lg:flex w-12 h-12 items-center justify-center rounded-xl
+              className="hidden h-11 w-11 items-center justify-center rounded-xl
                 text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
-                hover:bg-white border border-transparent hover:border-[var(--color-border)] transition-all duration-200"
+                hover:bg-white border border-transparent hover:border-[var(--color-border)] transition-all duration-200 xl:flex"
             >
               <FaTruck size={17} />
             </a>
 
-            <div className="hidden lg:block relative" ref={dropRef}>
+            <div className="relative hidden xl:block" ref={dropRef}>
               <button
                 onClick={() => setDropdown((v) => !v)}
                 aria-label="Account"
-                className="w-12 h-12 flex items-center justify-center rounded-xl
+                className="flex h-11 w-11 items-center justify-center rounded-xl
                   text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
                   hover:bg-white border border-transparent hover:border-[var(--color-border)] transition-all duration-200"
               >
@@ -298,10 +297,10 @@ export default function Header() {
             <button
               onClick={() => navigate("/cart")}
               aria-label="Cart"
-              className="relative hidden lg:flex items-center gap-2.5 h-12 px-7 rounded-xl
+              className="relative hidden h-11 items-center gap-2.5 rounded-xl px-5
                 bg-[var(--color-text)] text-white hover:bg-[var(--color-accent-hover)] hover:scale-[1.02]
                 shadow-[0_10px_24px_rgba(17,24,39,0.22)] transition-all duration-300 ml-1
-                text-[14px] font-semibold uppercase tracking-[0.12em]"
+                text-[13px] font-semibold uppercase tracking-[0.12em] xl:flex 2xl:px-6"
             >
               <FaShoppingCart size={15} />
               <span>Cart</span>
@@ -315,18 +314,18 @@ export default function Header() {
             <button
               onClick={() => navigate("/cart")}
               aria-label="Cart"
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg
+              className="relative flex h-10 w-10 items-center justify-center rounded-lg
                 text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
-                hover:bg-white transition-all duration-200"
+                hover:bg-white transition-all duration-200 xl:hidden"
             >
               <FaShoppingCart size={15} />
               {cartCount > 0 && <BadgeCount n={cartCount} />}
             </button>
 
             <button
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg
+              className="flex h-10 w-10 items-center justify-center rounded-lg
               text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
-              hover:bg-white transition-all duration-200"
+              hover:bg-white transition-all duration-200 xl:hidden"
               onClick={() => setMobileOpen((v) => !v)}
               aria-label="Menu"
             >

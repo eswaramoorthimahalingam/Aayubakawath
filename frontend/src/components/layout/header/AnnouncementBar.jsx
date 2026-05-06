@@ -34,7 +34,7 @@ export default function AnnouncementBar({ announcements }) {
 
   return (
     <div className="relative z-50 min-h-9 bg-[var(--color-sage)] px-4 text-white">
-      <div className="mx-auto flex h-9 max-w-[1680px] items-center justify-center">
+      <div className="mx-auto flex h-9 max-w-[1600px] items-center justify-center">
         <p
           key={current}
           className="animate-fade-in truncate text-center text-[11px] font-semibold uppercase tracking-[0.18em] opacity-95 sm:text-xs"

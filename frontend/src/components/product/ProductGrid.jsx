@@ -208,7 +208,7 @@ export default function ProductGrid() {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 min-[420px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-5 gap-2.5 sm:gap-3 xl:gap-3.5">
+        <div className="grid grid-cols-1 min-[420px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4 gap-2.5 sm:gap-3 xl:gap-3.5">
           {filteredProducts.map((p, i) => (
             <motion.div
               key={p.id}

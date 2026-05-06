@@ -81,7 +81,7 @@ export default function HeaderSearch() {
   return (
     <div
       ref={searchRef}
-      className="relative hidden lg:block w-[180px] xl:w-[260px] 2xl:w-[340px] shrink-0"
+      className="relative hidden w-[200px] shrink-0 lg:block xl:w-[240px] 2xl:w-[300px]"
     >
       <form onSubmit={handleSearchSubmit}>
         <label

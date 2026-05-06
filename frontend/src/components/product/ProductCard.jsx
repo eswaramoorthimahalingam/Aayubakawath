@@ -1,18 +1,15 @@
-import React, { useState, useEffect, memo } from "react";
-import { useNavigate } from "react-router-dom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { addToCart } from "../../services/cartService";
-import {
-  addToWishlist,
-  removeFromWishlist,
-} from "../../services/wishlistService";
-import { toast } from "react-toastify";
-import { useAuth } from "../../hooks/useAuth";
+import React, { useState, useEffect, memo } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { addToCart } from '../../services/cartService'
+import { addToWishlist, removeFromWishlist } from '../../services/wishlistService'
+import { toast } from 'react-toastify'
+import { useAuth } from '../../hooks/useAuth'
 import {
   ProductCardImage,
   ProductCardInfo,
   ProductCardActions,
-} from "./product-card/ProductCardParts";
+} from './product-card/ProductCardParts'
 
 const ProductCard = memo(function ProductCard({
   product,
@@ -20,87 +17,81 @@ const ProductCard = memo(function ProductCard({
   sectionVisible = true,
   wishlistSet,
 }) {
-  const { isAuthenticated } = useAuth();
-  const [hov, setHov] = useState(false);
-  const [cardVisible, setCardVisible] = useState(false);
-  const navigate = useNavigate();
-  const qc = useQueryClient();
-  const [adding, setAdding] = useState(false);
+  const { isAuthenticated } = useAuth()
+  const [hov, setHov] = useState(false)
+  const [cardVisible, setCardVisible] = useState(false)
+  const navigate = useNavigate()
+  const qc = useQueryClient()
+  const [adding, setAdding] = useState(false)
 
   useEffect(() => {
-    if (!sectionVisible) return;
-    const t = setTimeout(() => setCardVisible(true), animDelay * 1000);
-    return () => clearTimeout(t);
-  }, [sectionVisible, animDelay]);
+    if (!sectionVisible) return
+    const t = setTimeout(() => setCardVisible(true), animDelay * 1000)
+    return () => clearTimeout(t)
+  }, [sectionVisible, animDelay])
 
   const handleAddToCart = async (e) => {
-    e.stopPropagation();
+    e.stopPropagation()
     if (!isAuthenticated) {
-      toast.error("Please login first.");
-      navigate("/login");
-      return;
+      toast.error('Please login first.')
+      navigate('/login')
+      return
     }
-    if (adding) return;
-    setAdding(true);
+    if (adding) return
+    setAdding(true)
 
-    qc.setQueryData(["cart"], (old) => {
-      if (!old) return old;
-      const items = Array.isArray(old) ? old : (old.items ?? []);
-      const existing = items.find((i) => i.productId === product.id);
+    qc.setQueryData(['cart'], (old) => {
+      if (!old) return old
+      const items = Array.isArray(old) ? old : (old.items ?? [])
+      const existing = items.find((i) => i.productId === product.id)
       const updatedItems = existing
-        ? items.map((i) =>
-            i.productId === product.id ? { ...i, quantity: i.quantity + 1 } : i,
-          )
-        : [...items, { productId: product.id, quantity: 1, product }];
-      return Array.isArray(old)
-        ? updatedItems
-        : { ...old, items: updatedItems };
-    });
+        ? items.map((i) => (i.productId === product.id ? { ...i, quantity: i.quantity + 1 } : i))
+        : [...items, { productId: product.id, quantity: 1, product }]
+      return Array.isArray(old) ? updatedItems : { ...old, items: updatedItems }
+    })
 
-    toast.success("Item added to cart!");
+    toast.success('Item added to cart!')
 
     try {
-      await addToCart({ productId: product.id, quantity: 1 });
-      qc.invalidateQueries({ queryKey: ["cart"] });
+      await addToCart({ productId: product.id, quantity: 1 })
+      qc.invalidateQueries({ queryKey: ['cart'] })
     } catch (err) {
-      qc.invalidateQueries({ queryKey: ["cart"] });
+      qc.invalidateQueries({ queryKey: ['cart'] })
       if (err.response?.status === 401) {
-        toast.error("Please login first.");
-        navigate("/login");
-      } else toast.error("Failed to add to cart.");
+        toast.error('Please login first.')
+        navigate('/login')
+      } else toast.error('Failed to add to cart.')
     } finally {
-      setAdding(false);
+      setAdding(false)
     }
-  };
+  }
 
-  const wishlisted = wishlistSet ? wishlistSet.has(product.id) : false;
+  const wishlisted = wishlistSet ? wishlistSet.has(product.id) : false
 
   const wishlistMut = useMutation({
     mutationFn: () =>
-      wishlisted
-        ? removeFromWishlist(product.id)
-        : addToWishlist({ productId: product.id }),
+      wishlisted ? removeFromWishlist(product.id) : addToWishlist({ productId: product.id }),
     onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ["wishlist"] });
-      toast.success(wishlisted ? "Removed from wishlist" : "Added to wishlist");
+      qc.invalidateQueries({ queryKey: ['wishlist'] })
+      toast.success(wishlisted ? 'Removed from wishlist' : 'Added to wishlist')
     },
     onError: (err) => {
       if (err.response?.status === 401) {
-        toast.error("Please login first.");
-        navigate("/login");
-      } else toast.error("Failed to update wishlist.");
+        toast.error('Please login first.')
+        navigate('/login')
+      } else toast.error('Failed to update wishlist.')
     },
-  });
+  })
 
   const handleToggleWishlist = (e) => {
-    e.stopPropagation();
+    e.stopPropagation()
     if (!isAuthenticated) {
-      toast.error("Please login first.");
-      navigate("/login");
-      return;
+      toast.error('Please login first.')
+      navigate('/login')
+      return
     }
-    wishlistMut.mutate();
-  };
+    wishlistMut.mutate()
+  }
 
   return (
     <div
@@ -113,10 +104,8 @@ const ProductCard = memo(function ProductCard({
       <ProductCardImage
         product={product}
         hov={hov}
-        setHov={setHov}
         wishlisted={wishlisted}
         onToggleWishlist={handleToggleWishlist}
-        onAddToCart={handleAddToCart}
         adding={adding}
         wishlistPending={wishlistMut.isPending}
       />
@@ -125,7 +114,7 @@ const ProductCard = memo(function ProductCard({
         <ProductCardActions onAddToCart={handleAddToCart} adding={adding} />
       </div>
     </div>
-  );
-});
+  )
+})
 
-export default ProductCard;
+export default ProductCard
