@@ -55,13 +55,13 @@ export default function OurBusiness() {
             className="group flex-1 flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden"
           >
             {/* Image — top */}
-            <div className="w-full h-48 overflow-hidden">
+            <div className="flex h-64 md:h-72 w-full items-center justify-center overflow-hidden bg-transparent p-0">
               <img
                 src={card.image}
                 alt={card.title}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
               />
             </div>
 

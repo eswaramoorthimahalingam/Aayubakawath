@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import img from "../../assets/images/q3.jpg";
+import img from "../../assets/images/home-rootednature.jpeg";
 
 export default function OurStory() {
   const navigate = useNavigate();

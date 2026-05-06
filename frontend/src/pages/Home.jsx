@@ -140,42 +140,47 @@ export default function Home() {
         </LazySection>
       </motion.div>
 
-      {/* Community — Customer Reviews */}
-      <motion.section
-        {...fadeUp}
-        className="w-full max-w-full overflow-x-hidden bg-[var(--color-bg-soft)] border-y border-[var(--color-border)] py-12 sm:py-16 lg:py-20"
-      >
-        <div className="flex items-center justify-center gap-4 py-4">
-          <div className="w-8 h-px bg-[var(--color-sage)]" />
-          <p
-            className="label whitespace-nowrap"
-            style={{
-              fontSize: "clamp(1.25rem, 4vw, 2rem)",
-              fontWeight: "500",
-            }}
-          >
-            Our Community
-          </p>
-          <div className="w-8 h-px bg-[var(--color-sage)]" />
-        </div>
-        <div className="w-full max-w-[1400px] mx-auto px-3 lg:px-4 overflow-x-hidden">
-          <h2
-            className="display-heading text-[var(--color-text)] text-center mb-8"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}
-          >
-            What Our Customers Say
-          </h2>
-          <LazySection minHeight={300}>
-            <ClientReview />
-          </LazySection>
-          <div className="mt-8">
-            <LazySection minHeight={150}>
-              <Certificate />
-            </LazySection>
-          </div>
-        </div>
-      </motion.section>
+      {/* Temporarily Hidden Image Panel */}
 
+{/*
+<motion.section
+  {...fadeUp}
+  className="w-full max-w-full overflow-x-hidden bg-[var(--color-bg-soft)] border-y border-[var(--color-border)] py-12 sm:py-16 lg:py-20"
+>
+  <div className="flex items-center justify-center gap-4 py-4">
+    <div className="w-8 h-px bg-[var(--color-sage)]" />
+    <p
+      className="label whitespace-nowrap"
+      style={{
+        fontSize: "clamp(1.25rem, 4vw, 2rem)",
+        fontWeight: "500",
+      }}
+    >
+      Our Community
+    </p>
+    <div className="w-8 h-px bg-[var(--color-sage)]" />
+  </div>
+
+  <div className="w-full max-w-[1400px] mx-auto px-3 lg:px-4 overflow-x-hidden">
+    <h2
+      className="display-heading text-[var(--color-text)] text-center mb-8"
+      style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}
+    >
+      What Our Customers Say
+    </h2>
+
+    <LazySection minHeight={300}>
+      <ClientReview />
+    </LazySection>
+
+    <div className="mt-8">
+      <LazySection minHeight={150}>
+        <Certificate />
+      </LazySection>
+    </div>
+  </div>
+</motion.section>
+*/}
       {/* Testimonials */}
       <motion.div {...fadeUp}>
         <LazySection minHeight={400}>

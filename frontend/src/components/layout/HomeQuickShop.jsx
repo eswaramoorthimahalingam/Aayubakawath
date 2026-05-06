@@ -6,6 +6,12 @@ import sugarBottle from "../../assets/images/product-updated/blood-sugar-updated
 import vitalityBottle from "../../assets/images/product-updated/vitality-updated.png";
 import wellnessBottle from "../../assets/images/product-updated/general-health-og-white.png";
 import brainBottle from "../../assets/images/product-updated/brain-tonic-updated.png";
+import cardiacLabel from "../../assets/images/quick-shop-labels/cardiac.jpeg";
+import diabeticLabel from "../../assets/images/quick-shop-labels/diabetic.jpeg";
+import generalLabel from "../../assets/images/quick-shop-labels/general.jpeg";
+import vitalityLabel from "../../assets/images/quick-shop-labels/vitality.jpeg";
+import brainLabel from "../../assets/images/quick-shop-labels/brain.jpeg";
+import comboLabel from "../../assets/images/quick-shop-labels/combo.jpeg";
 
 const quickLinks = [
   { label: "Bestsellers" },
@@ -14,45 +20,55 @@ const quickLinks = [
   { label: "Sugar Balance", hasMenu: true, isNew: true },
   { label: "Combos" },
   { label: "Shop All" },
-  { label: "About us" },
-  { label: "Blog" },
 ];
 
 const spotlightCards = [
   {
     title: "Heart Care",
-    caption: "Daily support",
+    caption: "Diabetic support",
     image: cholesterolBottle,
+    labelImage: cardiacLabel,
+    imageClassName: "h-[140px]",
     bg: "from-[#eff8b9] via-[#d9ef74] to-[#bdd94f]",
   },
   {
     title: "Sugar Care",
     caption: "Balance blend",
     image: sugarBottle,
+    labelImage: diabeticLabel,
+    imageClassName: "h-[132px]",
     bg: "from-[#d8f3ff] via-[#9cdfef] to-[#68c3d8]",
   },
   {
     title: "Vitality",
-    caption: "Power plus",
+    caption: "Energy & Stamina",
     image: vitalityBottle,
+    labelImage: vitalityLabel,
+    imageClassName: "h-[146px]",
     bg: "from-[#ffe2c8] via-[#ffc387] to-[#f6a25e]",
   },
   {
     title: "General Wellness",
     caption: "Everyday care",
     image: wellnessBottle,
+    labelImage: generalLabel,
+    imageClassName: "h-[138px]",
     bg: "from-[#e3f8d3] via-[#bde893] to-[#92cf53]",
   },
   {
     title: "Brain Tonic",
-    caption: "Focus support",
+    caption: "cognitive Performance",
     image: brainBottle,
+    labelImage: brainLabel,
+    imageClassName: "h-[138px]",
     bg: "from-[#efe0ff] via-[#d3b8ff] to-[#b48ef4]",
   },
   {
     title: "Shop Combos",
-    caption: "Save more",
+    caption: "Wellness Care",
     image: vitalityBottle,
+    labelImage: comboLabel,
+    imageClassName: "h-[146px]",
     bg: "from-[#ffe4ed] via-[#ffc0d3] to-[#f596b6]",
   },
 ];
@@ -113,14 +129,14 @@ export default function HomeQuickShop() {
             {spotlightCards.map((card) => (
               <article
                 key={card.title}
-                className="w-[168px] shrink-0 rounded-[28px] bg-white px-2 pb-2 pt-3 text-center transition-transform duration-300 hover:-translate-y-1 sm:w-[184px]"
+                className="flex w-[196px] shrink-0 flex-col rounded-[28px] bg-white px-2 pb-3 pt-3 text-center transition-transform duration-300 hover:-translate-y-1 sm:w-[208px]"
               >
                 <button
                   type="button"
                   onClick={goToShop}
-                  className="group block w-full"
+                  className="group flex w-full flex-col items-center"
                 >
-                  <div className="relative mx-auto flex h-[164px] w-full items-center justify-center overflow-hidden rounded-[32px] bg-[#fdfdf9]">
+                  <div className="relative mx-auto flex h-[168px] w-full items-center justify-center overflow-hidden rounded-[32px] bg-[#fdfdf9]">
                     <div
                       className={`absolute left-1/2 top-1/2 h-[104px] w-[104px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br ${card.bg} blur-[1px]`}
                     />
@@ -129,15 +145,22 @@ export default function HomeQuickShop() {
                     <img
                       src={card.image}
                       alt={card.title}
-                      className="relative z-10 h-[138px] w-auto object-contain drop-shadow-[0_12px_24px_rgba(17,24,39,0.16)] transition-transform duration-300 group-hover:scale-[1.04]"
+                      className={`relative z-10 w-auto object-contain object-center drop-shadow-[0_12px_24px_rgba(17,24,39,0.16)] transition-transform duration-300 group-hover:scale-[1.04] ${card.imageClassName}`}
                     />
                   </div>
-                  <div className="pt-3">
+                  <div className="flex w-full flex-col items-center pt-3">
                     <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--color-text-muted)]">
                       {card.caption}
                     </p>
+                    <div className="mx-auto mt-3 w-[72%] overflow-hidden rounded-[18px] border border-transparent bg-transparent shadow-none">
+                      <img
+                        src={card.labelImage}
+                        alt={`${card.title} label`}
+                        className="h-auto w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
                     <div
-                      className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border
+                      className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full border
                         border-[var(--color-border-strong)] px-4 py-2.5 text-[13px] font-medium text-[var(--color-text)]
                         transition-colors duration-200 group-hover:border-[var(--color-sage)] group-hover:text-[var(--color-sage-dark)]"
                     >

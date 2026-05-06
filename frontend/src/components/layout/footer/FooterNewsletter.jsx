@@ -28,7 +28,7 @@ export default function FooterNewsletter({ showQuote }) {
               className="display-heading text-[var(--color-text)]"
               style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)" }}
             >
-              Get 10% Off Your First Order
+              Get 30% Off Your First Order
             </h2>
             <p className="font-body text-[var(--color-text-secondary)] text-lg mt-2 max-w-md">
               Exclusive wellness tips, new launches, and member-only offers.
