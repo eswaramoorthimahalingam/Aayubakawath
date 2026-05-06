@@ -1,5 +1,6 @@
 import React from "react";
 import Banner from "../components/layout/Banner";
+import HomeQuickShop from "../components/layout/HomeQuickShop";
 import OfferScrollBar from "../components/layout/OfferScrollBar";
 import CategoryList from "../components/product/CategoryList";
 import FirstBanner from "../components/layout/banner/FirstBanner";
@@ -31,7 +32,9 @@ export default function Home() {
         <title>Aayubakwath — Premium Ayurvedic Wellness</title>
       </Helmet>
 
-      <Banner />
+      <HomeQuickShop />
+
+      <Banner variant="home" />
 
       <motion.div {...fadeUp} className="w-full overflow-x-hidden">
         <div className="w-full border-y border-[var(--color-border)] overflow-hidden bg-[var(--color-bg-soft)]">

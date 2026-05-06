@@ -107,9 +107,7 @@ export default function Header() {
     navigate("/login");
   };
 
-  const headerBg = scrolled
-    ? "bg-white/96 backdrop-blur-xl shadow-[0_10px_28px_rgba(15,23,42,0.05)] border-b border-[var(--color-border)]"
-    : "bg-white border-b border-[var(--color-border)]";
+  const headerBg = "bg-white border-b border-[#f3f3f3]";
 
   return (
     <>
@@ -118,7 +116,7 @@ export default function Header() {
       <header
         className={`sticky top-0 z-40 transition-all duration-500 ${headerBg}`}
       >
-        <div className="mx-auto flex h-[78px] w-full max-w-[1600px] items-center gap-2 px-3 sm:px-5 lg:h-[82px] lg:px-6 xl:h-[86px] xl:px-8 2xl:px-10">
+        <div className="mx-auto flex h-[78px] w-full max-w-[1600px] items-center gap-3 px-3 sm:px-5 lg:h-[82px] lg:px-6 xl:h-[86px] xl:px-8 2xl:px-10">
           {/* Logo */}
           <a
             href="/"
@@ -129,8 +127,8 @@ export default function Header() {
             className="group flex min-w-0 shrink-0 items-center gap-2.5 xl:gap-3.5"
           >
             <div
-              className="w-12 h-12 overflow-hidden rounded-xl border border-[var(--color-border)] flex-shrink-0
-              shadow-[0_6px_16px_rgba(15,23,42,0.08)] group-hover:border-[var(--color-sage)] transition-colors duration-300"
+              className="h-12 w-12 flex-shrink-0 overflow-hidden rounded-[18px] border border-[#e9e2d7] bg-white
+              group-hover:border-[var(--color-sage)] transition-colors duration-300"
             >
               <img
                 src={logo}
@@ -139,7 +137,7 @@ export default function Header() {
               />
             </div>
             <span
-              className="hidden whitespace-nowrap font-display text-[24px] font-semibold leading-none tracking-tight text-[var(--color-text)] sm:block xl:text-[28px] 2xl:text-[31px]
+              className="hidden whitespace-nowrap font-display text-[25px] font-semibold leading-none tracking-tight text-[var(--color-text)] sm:block xl:text-[29px] 2xl:text-[32px]
               group-hover:text-[var(--color-sage)] transition-colors duration-300"
             >
               Aayubakwath
@@ -147,7 +145,7 @@ export default function Header() {
           </a>
 
           {/* Desktop nav */}
-          <nav className="ml-1 hidden min-w-0 flex-1 items-center justify-center gap-1 rounded-2xl border border-[var(--color-border)] bg-white p-1 xl:flex">
+          <nav className="ml-1 hidden min-w-0 flex-1 items-center justify-center gap-2 rounded-[22px] bg-white px-4 py-2 xl:flex">
             {navLinks.map(({ label, href }) => {
               const active = isActive(href);
               return (
@@ -158,16 +156,16 @@ export default function Header() {
                     e.preventDefault();
                     navigate(href);
                   }}
-                  className={`relative rounded-xl px-2.5 py-3 font-body text-[13px] font-semibold tracking-[0.03em] whitespace-nowrap transition-all duration-250 xl:px-3.5 xl:text-[14px]
+                  className={`relative rounded-xl px-3 py-3 font-body text-[15px] font-medium tracking-[0.01em] whitespace-nowrap transition-all duration-250 xl:px-4 xl:text-[16px]
                     ${
                       active
                         ? "text-[var(--color-text)] bg-white"
-                        : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)] hover:bg-white"
+                        : "text-[var(--color-text-secondary)] hover:text-[var(--color-text)]"
                     }`}
                 >
                   {label}
                   {active && (
-                    <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[var(--color-sage)]" />
+                    <span className="absolute bottom-1 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-[var(--color-sage)]" />
                   )}
                 </a>
               );
@@ -186,7 +184,7 @@ export default function Header() {
               aria-label="Wishlist"
               className="relative hidden h-11 w-11 items-center justify-center rounded-xl
                 text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
-                hover:bg-white border border-transparent hover:border-[var(--color-border)] transition-all duration-200 xl:flex"
+                transition-all duration-200 xl:flex"
             >
               <FaHeart size={17} />
               {wishlistCount > 0 && <BadgeCount n={wishlistCount} />}
@@ -201,7 +199,7 @@ export default function Header() {
               aria-label="Track order"
               className="hidden h-11 w-11 items-center justify-center rounded-xl
                 text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
-                hover:bg-white border border-transparent hover:border-[var(--color-border)] transition-all duration-200 xl:flex"
+                transition-all duration-200 xl:flex"
             >
               <FaTruck size={17} />
             </a>
@@ -212,7 +210,7 @@ export default function Header() {
                 aria-label="Account"
                 className="flex h-11 w-11 items-center justify-center rounded-xl
                   text-[var(--color-text-secondary)] hover:text-[var(--color-text)]
-                  hover:bg-white border border-transparent hover:border-[var(--color-border)] transition-all duration-200"
+                  transition-all duration-200"
               >
                 <FaUser size={17} />
               </button>

@@ -81,13 +81,13 @@ export default function HeaderSearch() {
   return (
     <div
       ref={searchRef}
-      className="relative hidden w-[200px] shrink-0 lg:block xl:w-[240px] 2xl:w-[300px]"
+      className="relative hidden w-[220px] shrink-0 lg:block xl:w-[280px] 2xl:w-[320px]"
     >
       <form onSubmit={handleSearchSubmit}>
         <label
-          className="relative flex items-center gap-2.5 border border-[var(--color-border)] bg-white
-          px-3.5 sm:px-5 h-12 sm:h-14 rounded-xl sm:rounded-2xl cursor-text shadow-[0_8px_24px_rgba(15,23,42,0.06)]
-          focus-within:border-[var(--color-sage)] focus-within:ring-2 focus-within:ring-[rgba(130,155,28,0.2)]
+          className="relative flex h-12 cursor-text items-center gap-2.5 rounded-[22px] bg-white
+          px-3.5 sm:h-14 sm:px-5 sm:rounded-[22px]
+          focus-within:ring-2 focus-within:ring-[rgba(130,155,28,0.14)]
           transition-all duration-200"
         >
           <Search size={18} className="shrink-0 text-[var(--color-text-muted)]" />
@@ -97,7 +97,7 @@ export default function HeaderSearch() {
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setSearchFocused(true)}
               placeholder={`Search ${ANIMATED_PLACEHOLDERS[placeholderIdx]}`}
-              className="relative z-10 w-full bg-transparent font-body text-[14px] xl:text-[15px] text-[var(--color-text)] outline-none placeholder:text-[var(--color-text-placeholder)]"
+              className="relative z-10 w-full bg-transparent font-body text-[15px] xl:text-[16px] text-[var(--color-text)] outline-none placeholder:text-[var(--color-text-placeholder)]"
             />
           </div>
           {searchQuery && (
